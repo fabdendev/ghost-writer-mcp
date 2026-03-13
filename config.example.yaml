@@ -1,0 +1,134 @@
+github:
+  # Token is only needed for repos without local_path (GitHub API fallback).
+  # Use $(gh auth token) to pull from GitHub CLI, or set GITHUB_PAT env var.
+  token: "${GITHUB_PAT}"
+  # For GitHub Enterprise or GitLab, change the host for commit URLs:
+  # host: "https://gitlab.company.com"
+  host: "https://github.com"
+  repos:
+    - owner: your-org
+      name: repo-one
+      # Your role gives the generator context about your perspective.
+      # This shapes the "author voice" in drafts — write what you'd put on LinkedIn.
+      role: "Lead architect — designed event-driven pipeline"
+      content_weight: 1.0  # 0.0-1.0, higher = more likely to be selected
+      local_path: "/path/to/local/clone"  # optional — if set, uses git log (faster, no API)
+    - owner: your-org
+      name: repo-two
+      role: "Contributor — ML feature engineering"
+      content_weight: 0.8
+      # No local_path → falls back to GitHub API (requires token)
+
+llm:
+  # --- Ollama (default, free, local) ---
+  provider: ollama
+  base_url: "http://localhost:11434/v1"
+  classifier_model: qwen3:8b
+  generator_model: qwen3:8b
+  api_key: "ollama"
+
+  # --- Anthropic (uncomment to use cloud models) ---
+  # provider: anthropic
+  # classifier_model: claude-haiku-4-5-20251001
+  # generator_model: claude-sonnet-4-5-20250514
+  # api_key: "${ANTHROPIC_API_KEY}"
+
+sanitisation:
+  blocklist:
+    company_names: ["Acme Corp", "AcmeCo"]
+    client_names: ["ClientX", "Big Bank"]
+    product_names: ["Project Phoenix", "internal-tool"]
+    infrastructure: ["prod-db-01.internal", "10.0."]
+    people: ["John Doe"]
+  abstractions:
+    "Acme Corp": "a mid-size fintech"
+    "Project Phoenix": "an internal data platform"
+    "Big Bank": "a major financial institution"
+
+content:
+  # Define 3-5 content pillars that match YOUR expertise.
+  # The classifier maps activities to these pillars and scores them.
+  # Below are examples for different roles — pick what fits you.
+
+  # --- Example: AI / Data Engineer ---
+  pillars:
+    - name: ai_engineering
+      description: "Building AI agents, LLM integration, prompt engineering"
+      repo_signals: ["agent", "llm", "anthropic", "openai", "prompt"]
+      weight: 1.0
+    - name: data_architecture
+      description: "Data pipelines, ETL, database design, event-driven systems"
+      repo_signals: ["pipeline", "etl", "kafka", "database", "migration"]
+      weight: 0.8
+    - name: engineering_leadership
+      description: "Technical decisions, team practices, code review culture"
+      repo_signals: ["refactor", "architecture", "review", "ci", "deploy"]
+      weight: 0.6
+    - name: open_source
+      description: "Open source contributions, community, tooling"
+      repo_signals: ["oss", "contribution", "community", "plugin"]
+      weight: 0.5
+
+  # --- Example: Frontend Engineer ---
+  # pillars:
+  #   - name: frontend_architecture
+  #     description: "Component design, state management, design systems"
+  #     repo_signals: ["component", "react", "vue", "svelte", "design-system"]
+  #     weight: 1.0
+  #   - name: web_performance
+  #     description: "Core Web Vitals, bundle optimization, rendering"
+  #     repo_signals: ["performance", "lighthouse", "bundle", "lazy", "cache"]
+  #     weight: 0.9
+  #   - name: dx_tooling
+  #     description: "Developer experience, testing, CI/CD for frontend"
+  #     repo_signals: ["test", "storybook", "eslint", "ci", "vite", "webpack"]
+  #     weight: 0.7
+
+  # --- Example: DevOps / Platform Engineer ---
+  # pillars:
+  #   - name: infrastructure
+  #     description: "IaC, cloud architecture, Kubernetes, networking"
+  #     repo_signals: ["terraform", "k8s", "helm", "aws", "gcp", "infra"]
+  #     weight: 1.0
+  #   - name: observability
+  #     description: "Monitoring, alerting, SLOs, incident response"
+  #     repo_signals: ["prometheus", "grafana", "alert", "slo", "oncall"]
+  #     weight: 0.9
+  #   - name: ci_cd
+  #     description: "Build pipelines, deployment strategies, release engineering"
+  #     repo_signals: ["pipeline", "deploy", "release", "github-actions", "argocd"]
+  #     weight: 0.8
+
+  style:
+    tone: "pragmatic, technically credible, mildly opinionated"
+    language: "en"
+    max_length: 1500
+    use_emoji: false
+    use_hashtags: true
+    hashtag_count: 3
+    # Paste 2-3 LinkedIn posts you like (yours or others') as style examples.
+    # The generator will match this tone and structure.
+    few_shot_posts:
+      - |
+        Most AI agent frameworks are solving the wrong problem.
+
+        They give you 47 tools, 12 memory backends, and a flow chart
+        that looks like a London tube map. Then your agent hallucinates
+        on step 3 anyway.
+
+        What actually works: constrained loops, explicit state, and
+        knowing when to stop.
+
+        We rebuilt our pipeline agent with 3 tools and a token budget.
+        Result: 94% task completion, zero runaway loops.
+
+        The boring architecture won.
+      - |
+        Unpopular opinion: your data pipeline doesn't need Kafka.
+
+        Last month we replaced a Kafka cluster with a simple
+        PostgreSQL-based queue. 400 events/second, zero ops overhead,
+        and the on-call engineer can actually debug it at 3am.
+
+        Not every problem needs distributed infrastructure.
+        Sometimes the right answer is the simplest one that works.

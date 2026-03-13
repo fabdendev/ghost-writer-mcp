@@ -1,0 +1,11 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      configPath:
+        type: string
+        description: "Path to your config.yaml file"
+        default: "./config.yaml"
+  commandFunction: |-
+    (config) => ({ command: 'uvx', args: ['ghost-writer-mcp'], env: {} })
