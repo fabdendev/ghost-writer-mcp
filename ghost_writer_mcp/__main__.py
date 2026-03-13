@@ -1,5 +1,5 @@
 """Allow running as `python -m src`."""
 
-from src.cli import main
+from ghost_writer_mcp.cli import main
 
 main()

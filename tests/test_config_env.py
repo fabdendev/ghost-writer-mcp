@@ -3,7 +3,7 @@
 import os
 
 
-from src.config import load_config
+from ghost_writer_mcp.config import load_config
 
 
 def test_loads_env_file(tmp_path):
@@ -93,7 +93,7 @@ def test_env_does_not_override_existing(tmp_path):
 
 def test_default_host():
     """GitHubConfig should default to github.com."""
-    from src.config import GitHubConfig, RepoConfig
+    from ghost_writer_mcp.config import GitHubConfig, RepoConfig
 
     cfg = GitHubConfig(repos=[RepoConfig(owner="org", name="repo", role="dev")])
     assert cfg.host == "https://github.com"

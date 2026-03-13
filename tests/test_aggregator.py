@@ -2,8 +2,8 @@
 
 from datetime import datetime, timezone
 
-from src.scanner.activity import ActivityItem
-from src.scanner.aggregator import aggregate, _cluster_key
+from ghost_writer_mcp.scanner.activity import ActivityItem
+from ghost_writer_mcp.scanner.aggregator import aggregate, _cluster_key
 
 
 def _make_activity(title, repo="org/repo", additions=10, deletions=5):

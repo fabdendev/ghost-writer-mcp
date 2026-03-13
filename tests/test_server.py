@@ -3,8 +3,8 @@
 from unittest.mock import patch, MagicMock
 from datetime import datetime, timezone
 
-from src.config import GhostWriterConfig, GitHubConfig, RepoConfig, LLMConfig
-from src.scanner.activity import ActivityItem
+from ghost_writer_mcp.config import GhostWriterConfig, GitHubConfig, RepoConfig, LLMConfig
+from ghost_writer_mcp.scanner.activity import ActivityItem
 
 
 def _make_config(provider="anthropic", repos=None):
@@ -42,7 +42,7 @@ def _make_activity(repo="org/repo-local"):
 
 def test_llm_error_message_ollama():
     """Error message should mention ollama serve when provider is ollama."""
-    from src.server import _llm_error_message
+    from ghost_writer_mcp.server import _llm_error_message
 
     with patch("src.server.config", _make_config(provider="ollama")):
         msg = _llm_error_message()
@@ -52,7 +52,7 @@ def test_llm_error_message_ollama():
 
 def test_llm_error_message_anthropic():
     """Error message should mention API key when provider is anthropic."""
-    from src.server import _llm_error_message
+    from ghost_writer_mcp.server import _llm_error_message
 
     with patch("src.server.config", _make_config(provider="anthropic")):
         msg = _llm_error_message()
@@ -61,7 +61,7 @@ def test_llm_error_message_anthropic():
 
 def test_scan_repos_local_only():
     """When all repos have local_path, only local scanner is used."""
-    from src.server import _scan_repos
+    from ghost_writer_mcp.server import _scan_repos
 
     config = _make_config(repos=[
         RepoConfig(owner="org", name="repo", role="dev", local_path="/tmp/repo"),
@@ -78,7 +78,7 @@ def test_scan_repos_local_only():
 
 def test_scan_repos_falls_back_to_github_api():
     """Repos without local_path should trigger GitHub API fallback."""
-    from src.server import _scan_repos
+    from ghost_writer_mcp.server import _scan_repos
 
     config = _make_config()  # has one repo with local_path, one without
     local_result = [_make_activity("org/repo-local")]

@@ -4,8 +4,8 @@ import json
 from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
-from src.content.classifier import ClassifiedActivity, ContentClassifier
-from src.scanner.activity import ActivityItem
+from ghost_writer_mcp.content.classifier import ClassifiedActivity, ContentClassifier
+from ghost_writer_mcp.scanner.activity import ActivityItem
 
 
 def _make_activity(title="feat: add agent loop", repo="org/ai-repo"):

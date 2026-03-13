@@ -6,15 +6,15 @@ from pathlib import Path
 
 from fastmcp import FastMCP
 
-from src.config import load_config
-from src.content.classifier import ContentClassifier
-from src.content.generator import DraftGenerator
-from src.llm_client import LLMClient
-from src.scanner.activity import ActivityItem
-from src.scanner.aggregator import aggregate
-from src.scanner.github_client import GitHubScanner
-from src.scanner.local_git import LocalGitScanner
-from src.store.database import Database
+from ghost_writer_mcp.config import load_config
+from ghost_writer_mcp.content.classifier import ContentClassifier
+from ghost_writer_mcp.content.generator import DraftGenerator
+from ghost_writer_mcp.llm_client import LLMClient
+from ghost_writer_mcp.scanner.activity import ActivityItem
+from ghost_writer_mcp.scanner.aggregator import aggregate
+from ghost_writer_mcp.scanner.github_client import GitHubScanner
+from ghost_writer_mcp.scanner.local_git import LocalGitScanner
+from ghost_writer_mcp.store.database import Database
 
 logger = logging.getLogger(__name__)
 

@@ -5,9 +5,9 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from src.config import GhostWriterConfig
-from src.llm_client import LLMClient
-from src.store.blocklist import Blocklist
+from ghost_writer_mcp.config import GhostWriterConfig
+from ghost_writer_mcp.llm_client import LLMClient
+from ghost_writer_mcp.store.blocklist import Blocklist
 
 _PROMPTS_DIR = Path(__file__).parent / "prompts"
 

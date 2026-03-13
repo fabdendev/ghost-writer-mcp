@@ -1,9 +1,10 @@
 [project]
 name = "ghost-writer-mcp"
-version = "0.1.0"
+version = "0.2.0"
 description = "MCP server that turns GitHub activity into LinkedIn thought leadership"
 license = {text = "MIT"}
 keywords = ["mcp", "linkedin", "github", "ai", "llm", "content-generation"]
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastmcp>=2.0",
@@ -14,8 +15,13 @@ dependencies = [
     "pydantic>=2.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/fabdendev/ghost-writer-mcp"
+Repository = "https://github.com/fabdendev/ghost-writer-mcp"
+Issues = "https://github.com/fabdendev/ghost-writer-mcp/issues"
+
 [project.scripts]
-ghost-writer-mcp = "src.server:main"
+ghost-writer-mcp = "ghost_writer_mcp.server:main"
 
 [project.optional-dependencies]
 dev = ["pytest>=9.0", "ruff>=0.14"]
@@ -25,7 +31,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["ghost_writer_mcp"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

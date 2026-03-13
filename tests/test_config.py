@@ -4,7 +4,7 @@ import os
 import pytest
 import yaml
 
-from src.config import (
+from ghost_writer_mcp.config import (
     GhostWriterConfig,
     _resolve_env_vars,
     _resolve_env_recursive,

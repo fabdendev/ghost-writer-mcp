@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.config import (
+from ghost_writer_mcp.config import (
     GhostWriterConfig,
     GitHubConfig,
     LLMConfig,
@@ -12,7 +12,7 @@ from src.config import (
     ContentPillar,
     StyleConfig,
 )
-from src.store.database import Database
+from ghost_writer_mcp.store.database import Database
 
 
 @pytest.fixture

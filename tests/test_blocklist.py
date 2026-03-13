@@ -1,6 +1,6 @@
 """Tests for blocklist scanning and sanitisation — CRITICAL priority."""
 
-from src.store.blocklist import Blocklist
+from ghost_writer_mcp.store.blocklist import Blocklist
 
 
 class TestBlocklistScan:
@@ -70,7 +70,7 @@ class TestBlocklistScan:
         assert bl.is_clean(generic)
 
     def test_empty_blocklist(self):
-        from src.config import SanitisationConfig
+        from ghost_writer_mcp.config import SanitisationConfig
 
         bl = Blocklist(SanitisationConfig())
         assert bl.is_clean("Anything goes here.")

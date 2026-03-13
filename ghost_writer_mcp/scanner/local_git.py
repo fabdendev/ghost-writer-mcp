@@ -6,8 +6,8 @@ import subprocess
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from src.config import GhostWriterConfig, RepoConfig
-from src.scanner.activity import ActivityItem
+from ghost_writer_mcp.config import GhostWriterConfig, RepoConfig
+from ghost_writer_mcp.scanner.activity import ActivityItem
 
 logger = logging.getLogger(__name__)
 

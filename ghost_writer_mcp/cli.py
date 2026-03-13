@@ -10,12 +10,12 @@ import argparse
 import sys
 from datetime import datetime, timedelta, timezone
 
-from src.config import load_config
-from src.content.classifier import ContentClassifier
-from src.content.generator import DraftGenerator
-from src.scanner.aggregator import aggregate
-from src.scanner.local_git import LocalGitScanner
-from src.store.database import Database
+from ghost_writer_mcp.config import load_config
+from ghost_writer_mcp.content.classifier import ContentClassifier
+from ghost_writer_mcp.content.generator import DraftGenerator
+from ghost_writer_mcp.scanner.aggregator import aggregate
+from ghost_writer_mcp.scanner.local_git import LocalGitScanner
+from ghost_writer_mcp.store.database import Database
 
 config = load_config()
 db = Database()

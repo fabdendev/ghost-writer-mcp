@@ -3,9 +3,9 @@
 from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
-from src.content.classifier import ClassifiedActivity
-from src.content.generator import DraftGenerator, GeneratedDraft
-from src.scanner.activity import ActivityItem
+from ghost_writer_mcp.content.classifier import ClassifiedActivity
+from ghost_writer_mcp.content.generator import DraftGenerator, GeneratedDraft
+from ghost_writer_mcp.scanner.activity import ActivityItem
 
 
 def _make_classified_activity():

@@ -5,10 +5,10 @@ from pathlib import Path
 
 import re
 
-from src.config import GhostWriterConfig
-from src.content.abstractor import Abstractor, SanitisationResult
-from src.content.classifier import ClassifiedActivity
-from src.llm_client import LLMClient
+from ghost_writer_mcp.config import GhostWriterConfig
+from ghost_writer_mcp.content.abstractor import Abstractor, SanitisationResult
+from ghost_writer_mcp.content.classifier import ClassifiedActivity
+from ghost_writer_mcp.llm_client import LLMClient
 
 _PROMPTS_DIR = Path(__file__).parent / "prompts"
 

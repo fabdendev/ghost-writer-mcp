@@ -3,8 +3,8 @@
 from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
-from src.scanner.activity import ActivityItem
-from src.scanner.github_client import GitHubScanner
+from ghost_writer_mcp.scanner.activity import ActivityItem
+from ghost_writer_mcp.scanner.github_client import GitHubScanner
 
 
 class TestGitHubScanner:

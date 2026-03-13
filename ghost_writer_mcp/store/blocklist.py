@@ -3,7 +3,7 @@
 import re
 from dataclasses import dataclass
 
-from src.config import SanitisationConfig
+from ghost_writer_mcp.config import SanitisationConfig
 
 
 @dataclass

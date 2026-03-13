@@ -1,7 +1,7 @@
 """Aggregate raw activities into compact summaries for efficient LLM classification."""
 
 from dataclasses import dataclass, field
-from src.scanner.activity import ActivityItem
+from ghost_writer_mcp.scanner.activity import ActivityItem
 
 
 @dataclass

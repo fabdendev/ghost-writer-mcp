@@ -2,8 +2,8 @@
 
 from unittest.mock import patch, MagicMock
 
-from src.config import LLMConfig
-from src.llm_client import LLMClient
+from ghost_writer_mcp.config import LLMConfig
+from ghost_writer_mcp.llm_client import LLMClient
 
 
 def test_anthropic_provider_creates_anthropic_client():

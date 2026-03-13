@@ -6,10 +6,10 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from src.config import GhostWriterConfig
-from src.llm_client import LLMClient
-from src.scanner.activity import ActivityItem
-from src.scanner.aggregator import ActivityGroup
+from ghost_writer_mcp.config import GhostWriterConfig
+from ghost_writer_mcp.llm_client import LLMClient
+from ghost_writer_mcp.scanner.activity import ActivityItem
+from ghost_writer_mcp.scanner.aggregator import ActivityGroup
 
 logger = logging.getLogger(__name__)
 

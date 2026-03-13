@@ -2,7 +2,7 @@
 
 import httpx
 
-from src.config import LLMConfig
+from ghost_writer_mcp.config import LLMConfig
 
 _DEFAULT_TIMEOUT = 120  # seconds
 

@@ -5,8 +5,8 @@ from datetime import datetime, timedelta, timezone
 
 from github import Auth, Github
 
-from src.config import GhostWriterConfig
-from src.scanner.activity import ActivityItem
+from ghost_writer_mcp.config import GhostWriterConfig
+from ghost_writer_mcp.scanner.activity import ActivityItem
 
 logger = logging.getLogger(__name__)
 
